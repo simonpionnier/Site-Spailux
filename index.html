@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <script>
         tailwind.config = {
@@ -292,17 +293,43 @@
             opacity: 1;
         }
 
-        /* Scroll Animations */
+        /* Scroll Animations - Emerge from smoke effect */
         .fade-in-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.7) translateY(0);
+            filter: blur(10px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .fade-in-up.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1) translateY(0);
+            filter: blur(0px);
         }
+
+        /* Variant pour texte - plus subtil */
+        .fade-in-text {
+            opacity: 0;
+            transform: scale(0.85);
+            filter: blur(8px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                        filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-text.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0px);
+        }
+
+        /* Animation décalée pour créer un effet séquentiel */
+        .fade-in-up:nth-child(1) { transition-delay: 0s; }
+        .fade-in-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in-up:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in-up:nth-child(4) { transition-delay: 0.3s; }
 
         /* Light mode overrides */
         .light .glass {
@@ -367,6 +394,10 @@
 
         .logo-glow:hover {
             filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.5));
+        }
+
+        .logo-glow img {
+            border-radius: 1rem;
         }
 
         /* Seamless Navigation - Blends with background */
@@ -505,14 +536,14 @@
                     </div>
                 </div>
 
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight px-2">
+                <h1 class="fade-in-text text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight px-2">
                     L'Intelligence Artificielle<br class="hidden sm:block"/>
                     <span class="gradient-text">au service de votre rentabilité</span><br class="hidden sm:block"/>
                     <span class="block sm:inline">opérationnelle.</span>
                 </h1>
 
-                <p class="text-lg sm:text-xl md:text-2xl text-gray-400 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
-                    Automatisez vos tâches chronophages et formez vos équipes.<br class="hidden sm:block"/>
+                <p class="fade-in-text text-lg sm:text-xl md:text-2xl text-gray-400 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
+                    Automatisez vos tâches chronophages à faible valeur ajoutée, et formez vos équipes.<br class="hidden sm:block"/>
                     <span class="text-primary font-semibold">L'expertise IA par un ex-restaurateur</span> qui connaît vos défis.
                 </p>
 
@@ -770,7 +801,7 @@
                     <div class="space-y-3 mb-6">
                         <div class="flex items-start gap-3">
                             <span class="text-primary">✓</span>
-                            <span class="text-gray-400">Automatisation emails & réservations</span>
+                            <span class="text-gray-400">Automatisations (emails, réservations...)</span>
                         </div>
                         <div class="flex items-start gap-3">
                             <span class="text-primary">✓</span>
@@ -905,11 +936,18 @@
                 <div class="fade-in-up">
                     <div class="glass dark:glass rounded-xl sm:rounded-2xl p-6 sm:p-8">
                         <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Envoyez-moi un message</h3>
-                        <form class="space-y-4 sm:space-y-6" action="#" method="POST">
-                            <div>
-                                <label for="name" class="block text-sm font-medium mb-2">Nom complet</label>
-                                <input type="text" id="name" name="name" required
-                                    class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                        <form id="contact-form" class="space-y-4 sm:space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium mb-2">Prénom</label>
+                                    <input type="text" id="firstName" name="firstName" required
+                                        class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium mb-2">Nom</label>
+                                    <input type="text" id="lastName" name="lastName" required
+                                        class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                                </div>
                             </div>
 
                             <div>
@@ -936,14 +974,24 @@
                                     class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500"></textarea>
                             </div>
 
-                            <button type="submit" class="neon-button w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90">
+                            <button type="submit" id="submit-btn" class="neon-button w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90">
                                 Envoyer ma demande
                             </button>
+
+                            <!-- Message de succès -->
+                            <div id="success-message" class="hidden p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
+                                <p class="text-green-400 font-semibold text-center">✓ Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</p>
+                            </div>
+
+                            <!-- Message d'erreur -->
+                            <div id="error-message" class="hidden p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+                                <p class="text-red-400 font-semibold text-center">✗ Une erreur est survenue. Veuillez réessayer.</p>
+                            </div>
                         </form>
                     </div>
                 </div>
 
-                <!-- Calendly -->
+                <!-- Google Calendar -->
                 <div class="fade-in-up">
                     <div class="glass dark:glass rounded-xl sm:rounded-2xl p-6 sm:p-8 h-full">
                         <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Ou réservez directement un créneau</h3>
@@ -952,17 +1000,27 @@
                             sans engagement.
                         </p>
 
-                        <!-- Calendly Inline Widget -->
-                        <div class="calendly-inline-widget"
-                             data-url="https://calendly.com/votre-lien-calendly?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=8b5cf6"
-                             style="min-width:280px;height:550px;">
+                        <!-- Bouton de réservation Google Calendar -->
+                        <div class="flex flex-col items-center justify-center py-8">
+                            <a href="https://calendar.app.google/Z882g9rA2etSYCrc8" target="_blank" rel="noopener noreferrer"
+                               class="neon-button w-full bg-primary text-white px-8 py-6 rounded-lg font-semibold text-lg hover:bg-primary/90 text-center mb-6">
+                                📅 Réserver mon créneau
+                            </a>
+                            <p class="text-sm text-gray-400 text-center">
+                                Cliquez pour accéder au calendrier de réservation
+                            </p>
                         </div>
 
                         <div class="mt-4 sm:mt-6 p-3 sm:p-4 bg-primary/10 border border-primary/20 rounded-lg">
                             <p class="text-xs sm:text-sm text-gray-400">
                                 <strong class="text-white">💡 Audit offert :</strong> Lors de cet appel,
-                                j'identifierai 2-3 automatisations rapides que vous pourrez mettre en place
-                                immédiatement.
+                                nous identiefierons ensemble vos points de frictions
+                                 et vos besoins afin de définir quelles sont les solutions à mettre en place
+                                  pour vous permettre d'otpimiser votre éfficacité opérationnelle.
+                                  N'hésitez pas à préparer une courte présentation de votre activité ainsi que 
+                                  quelques questions sur les défis que vous rencontrez actuellement. 
+                                  Cela nous aidera à maximiser l'efficacité de notre échange.
+                                
                             </p>
                         </div>
                     </div>
@@ -1000,7 +1058,7 @@
                 <div>
                     <h4 class="font-semibold mb-4">Suivez-moi</h4>
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors group">
+                        <a href="https://www.linkedin.com/in/simon-pionnier-🇫🇷-🇱🇺-🇵🇫-4811ba34b" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors group">
                             <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
@@ -1072,10 +1130,10 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Scroll Animation
+        // Scroll Animation - Emerge from smoke effect
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1086,7 +1144,13 @@
             });
         }, observerOptions);
 
+        // Observer pour les éléments fade-in-up (sections)
         document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Observer pour les éléments fade-in-text (textes)
+        document.querySelectorAll('.fade-in-text').forEach(el => {
             observer.observe(el);
         });
 
@@ -1106,11 +1170,71 @@
             });
         });
 
-        // Form submission (placeholder - add your backend logic)
-        document.querySelector('form').addEventListener('submit', (e) => {
+        // Form submission avec n8n webhook
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('Merci pour votre message ! Je reviendrai vers vous très rapidement.');
-            e.target.reset();
+
+            const form = e.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+
+            // Désactiver le bouton et changer le texte
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+
+            // Masquer les messages précédents
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+
+            // Récupérer les données du formulaire
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                message: document.getElementById('message').value
+            };
+
+            console.log('Envoi des données:', formData);
+
+            try {
+                // Envoyer les données à n8n
+                const response = await fetch('https://n8n.srv1112400.hstgr.cloud/webhook/e025b630-5b33-4faa-8642-8cac6d2c8930', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                console.log('Réponse reçue:', response.status, response.statusText);
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Succès:', result);
+                    // Afficher le message de succès
+                    successMessage.classList.remove('hidden');
+                    // Réinitialiser le formulaire
+                    form.reset();
+                } else {
+                    console.error('Erreur HTTP:', response.status);
+                    // Afficher le message d'erreur
+                    errorMessage.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Erreur fetch:', error);
+                console.error('Type d\'erreur:', error.name);
+                console.error('Message d\'erreur:', error.message);
+                // Afficher le message d'erreur
+                errorMessage.classList.remove('hidden');
+            } finally {
+                // Réactiver le bouton
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer ma demande';
+            }
         });
     </script>
 </body>
