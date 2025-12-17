@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAILUX - Intelligence Artificielle pour votre rentabilité</title>
+    <meta name="description" content="Consulting IA et Automatisation pour PME. Expertise terrain + Tech. Spécialiste Hôtellerie/Restauration.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00E5FF',
+                        dark: '#0A0A0A',
+                        'dark-card': '#141414',
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Unified Dark Background with Turquoise Glow */
+        body {
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(0, 229, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 70%, rgba(0, 229, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 100%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+                #0A0A0A;
+            background-attachment: fixed;
+        }
+
+        /* Animated blue smoke - Layer 1 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 800px 400px at 20% 30%, rgba(0, 229, 255, 0.25) 0%, rgba(0, 200, 255, 0.15) 20%, transparent 50%),
+                radial-gradient(ellipse 600px 500px at 80% 60%, rgba(0, 255, 255, 0.2) 0%, rgba(0, 229, 255, 0.1) 25%, transparent 55%),
+                radial-gradient(ellipse 700px 600px at 50% 80%, rgba(0, 229, 255, 0.18) 0%, rgba(0, 200, 255, 0.08) 30%, transparent 60%);
+            animation: smokeMove1 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            opacity: 0.8;
+        }
+
+        /* Animated blue smoke - Layer 2 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 900px 450px at 60% 20%, rgba(0, 229, 255, 0.2) 0%, rgba(0, 255, 255, 0.12) 20%, transparent 50%),
+                radial-gradient(ellipse 750px 550px at 30% 70%, rgba(0, 200, 255, 0.22) 0%, rgba(0, 229, 255, 0.1) 25%, transparent 55%),
+                radial-gradient(ellipse 650px 500px at 85% 50%, rgba(0, 229, 255, 0.18) 0%, rgba(0, 255, 255, 0.09) 30%, transparent 60%);
+            animation: smokeMove2 25s ease-in-out infinite reverse;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(70px);
+            opacity: 0.7;
+        }
+
+        @keyframes smokeMove1 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(5%, -8%) rotate(3deg) scale(1.1);
+            }
+            50% {
+                transform: translate(-3%, 5%) rotate(-2deg) scale(1.05);
+            }
+            75% {
+                transform: translate(7%, -3%) rotate(4deg) scale(1.08);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes smokeMove2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            20% {
+                transform: translate(-6%, 4%) rotate(-3deg) scale(1.12);
+            }
+            40% {
+                transform: translate(4%, -6%) rotate(2deg) scale(1.06);
+            }
+            60% {
+                transform: translate(-5%, 7%) rotate(-4deg) scale(1.09);
+            }
+            80% {
+                transform: translate(6%, -4%) rotate(3deg) scale(1.07);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+        }
+
+        /* Ensure content is above animated background */
+        nav, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ultra Brilliant Glassmorphism - Maximum 3D Effect */
+        .glass {
+            position: relative;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 10, 10, 0.4) 0%,
+                rgba(20, 20, 20, 0.2) 100%
+            );
+            backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+            -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 40px 0 rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(0, 229, 255, 0.15),
+                inset 0 2px 4px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -2px 4px 0 rgba(0, 229, 255, 0.15),
+                0 15px 60px rgba(0, 229, 255, 0.1);
+        }
+
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.25) 0%,
+                rgba(0, 229, 255, 0.15) 50%,
+                transparent 100%
+            );
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .glass::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            height: 40%;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%
+            );
+            border-radius: inherit;
+            pointer-events: none;
+            filter: blur(10px);
+        }
+
+        .glass-light {
+            position: relative;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.8) 0%,
+                rgba(255, 255, 255, 0.6) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            box-shadow:
+                0 8px 32px 0 rgba(0, 229, 255, 0.15),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.9) 0%,
+                transparent 100%
+            );
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        /* Enhanced Neon 3D Button Effect with Glass */
+        .neon-button {
+            position: relative;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #00E5FF 0%, #00B8D4 100%);
+            box-shadow:
+                0 4px 15px rgba(0, 229, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .neon-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .neon-button:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 10px 40px rgba(0, 229, 255, 0.6),
+                0 0 30px rgba(0, 229, 255, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: linear-gradient(45deg, #00E5FF, #00FFFF);
+            filter: blur(25px);
+            z-index: -1;
+        }
+
+        .neon-button:hover::before {
+            opacity: 1;
+        }
+
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Light mode overrides */
+        .light .glass {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(255, 255, 255, 0.7) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        /* Gradient text with shimmer */
+        .gradient-text {
+            background: linear-gradient(135deg, #00E5FF 0%, #00FFFF 50%, #80FFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Smooth background with subtle glow - No grid */
+        .connection-bg {
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
+            background-size: 100% 100%, 100% 100%;
+        }
+
+        /* Ultra Brilliant Shine effect for cards on hover */
+        .glass:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: linear-gradient(
+                135deg,
+                rgba(10, 10, 10, 0.3) 0%,
+                rgba(20, 20, 20, 0.15) 100%
+            );
+            backdrop-filter: blur(35px) saturate(220%) brightness(1.2);
+            -webkit-backdrop-filter: blur(35px) saturate(220%) brightness(1.2);
+            box-shadow:
+                0 12px 50px 0 rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(0, 229, 255, 0.4),
+                0 0 100px rgba(0, 229, 255, 0.2),
+                inset 0 2px 6px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -2px 6px 0 rgba(0, 229, 255, 0.25);
+            transform: translateY(-4px) scale(1.01);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Logo glow effect */
+        .logo-glow {
+            filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.3));
+            transition: filter 0.3s ease;
+        }
+
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.5));
+        }
+
+        /* Seamless Navigation - Blends with background */
+        nav.glass {
+            background: linear-gradient(
+                180deg,
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(10, 10, 10, 0.8) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+            box-shadow:
+                0 4px 30px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(0, 229, 255, 0.05);
+        }
+
+        /* Subtle turquoise accent line on top of nav */
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(0, 229, 255, 0.3) 50%,
+                transparent 100%
+            );
+        }
+
+        /* SP AI LUX Logo Style - Neon effect on AI */
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            display: inline-block;
+        }
+
+        .logo-text .ai {
+            color: #00E5FF;
+            text-shadow:
+                0 0 10px rgba(0, 229, 255, 0.8),
+                0 0 20px rgba(0, 229, 255, 0.6),
+                0 0 30px rgba(0, 229, 255, 0.4),
+                0 0 40px rgba(0, 229, 255, 0.2);
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 10px rgba(0, 229, 255, 0.8),
+                    0 0 20px rgba(0, 229, 255, 0.6),
+                    0 0 30px rgba(0, 229, 255, 0.4),
+                    0 0 40px rgba(0, 229, 255, 0.2);
+            }
+            50% {
+                text-shadow:
+                    0 0 15px rgba(0, 229, 255, 1),
+                    0 0 30px rgba(0, 229, 255, 0.8),
+                    0 0 45px rgba(0, 229, 255, 0.6),
+                    0 0 60px rgba(0, 229, 255, 0.4);
+            }
+        }
+    </style>
+</head>
+<body class="dark bg-dark text-white transition-colors duration-300">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full top-0 z-50 glass border-b border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Left: Réserver un audit button -->
+                <div class="flex-shrink-0">
+                    <a href="#contact" class="hidden md:block neon-button bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/90">
+                        Réserver un audit
+                    </a>
+                </div>
+
+                <!-- Center: Navigation links -->
+                <div class="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
+                    <a href="#expertise" class="hover:text-primary transition-colors">Expertise</a>
+                    <a href="#services" class="hover:text-primary transition-colors">Services</a>
+                    <a href="#methode" class="hover:text-primary transition-colors">Méthode</a>
+                </div>
+
+                <!-- Right: Light/Dark Mode Toggle -->
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-primary/10 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2 rounded-lg hover:bg-primary/10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-primary/10">
+            <div class="px-4 pt-2 pb-4 space-y-3">
+                <a href="#expertise" class="block py-2 hover:text-primary transition-colors">Expertise</a>
+                <a href="#services" class="block py-2 hover:text-primary transition-colors">Services</a>
+                <a href="#methode" class="block py-2 hover:text-primary transition-colors">Méthode</a>
+                <a href="#contact" class="block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold mt-4">
+                    Réserver un audit
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden connection-bg pt-20 px-4">
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-dark/50 to-dark"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center">
+            <div class="fade-in-up">
+                <!-- Logo central -->
+                <div class="flex justify-center mb-8 sm:mb-12">
+                    <div class="logo-glow">
+                        <img src="logo-spailux.jpg" alt="SPAILUX Logo" class="h-32 sm:h-40 md:h-48 lg:h-56 w-auto mx-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight px-2">
+                    L'Intelligence Artificielle<br class="hidden sm:block"/>
+                    <span class="gradient-text">au service de votre rentabilité</span><br class="hidden sm:block"/>
+                    <span class="block sm:inline">opérationnelle.</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-400 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
+                    Automatisez vos tâches chronophages et formez vos équipes.<br class="hidden sm:block"/>
+                    <span class="text-primary font-semibold">L'expertise IA par un ex-restaurateur</span> qui connaît vos défis.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+                    <a href="#contact" class="neon-button w-full sm:w-auto bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-primary/90">
+                        Audit offert
+                    </a>
+                    <a href="#services" class="glass dark:glass w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:border-primary/30 transition-all">
+                        Découvrir mes services
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Section with Photo -->
+            <div class="mt-12 sm:mt-20 fade-in-up">
+                <div class="glass dark:glass rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 max-w-5xl mx-auto">
+                    <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
+                        <!-- Profile Photo with Neon Effect -->
+                        <div class="flex-shrink-0">
+                            <div class="relative">
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-cyan-400 to-primary opacity-75 blur-xl animate-pulse"></div>
+                                <div class="relative rounded-full p-1 bg-gradient-to-br from-primary via-cyan-400 to-primary">
+                                    <div class="rounded-full p-1 bg-dark">
+                                        <img src="photo profil.png" alt="Photo de profil" class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Text -->
+                        <div class="flex-1 text-left">
+                            <p class="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-3 sm:mb-4">
+                                <span class="text-primary font-semibold">L'IA, on en parle partout</span>, mais qui vous explique comment l'utiliser concrètement dans votre business ?
+                            </p>
+                            <p class="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-3 sm:mb-4">
+                                Mon parcours est le vôtre. Avec <span class="text-white font-semibold">20 ans d'expérience opérationnelle</span>, dont <span class="text-white font-semibold">12 années à la tête de mon propre restaurant</span>, je connais la réalité du terrain : le manque de personnel, les journées à rallonge, la paperasse qui s'accumule.
+                            </p>
+                            <p class="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
+                                Je m'appelle <span class="text-white font-semibold">Simon Pionnier</span> et j'ai créé <span class="gradient-text font-bold">SPAILUX</span> pour apporter aux PME ce que j'aurais rêvé avoir à l'époque : des outils simples pour automatiser les tâches ingrates et se concentrer sur ce qui compte vraiment : <span class="text-primary font-semibold">vos clients et votre chiffre d'affaires</span>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLÈME / RÉALITÉ -->
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                    Combien d'heures perdez-vous<br/>
+                    <span class="gradient-text">chaque semaine sur l'administratif ?</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- AVANT -->
+                <div class="fade-in-up glass dark:glass rounded-2xl p-8 border-red-500/20">
+                    <div class="text-red-400 font-bold text-xl mb-4">❌ AVANT</div>
+                    <h3 class="text-2xl font-bold mb-6">Le chaos quotidien</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">•</span>
+                            <span>Heures perdues sur les emails, plannings, factures</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">•</span>
+                            <span>Tâches répétitives qui épuisent vos équipes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">•</span>
+                            <span>Erreurs humaines coûteuses</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">•</span>
+                            <span>Perte de temps = perte d'argent</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- APRÈS -->
+                <div class="fade-in-up glass dark:glass rounded-2xl p-8 border-primary/20">
+                    <div class="text-primary font-bold text-xl mb-4">✓ APRÈS</div>
+                    <h3 class="text-2xl font-bold mb-6">Automatisation & sérénité</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <span class="text-primary mt-1">•</span>
+                            <span>Workflows automatisés 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-primary mt-1">•</span>
+                            <span>Équipes formées et autonomes sur l'IA</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-primary mt-1">•</span>
+                            <span>Fiabilité et précision maximales</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-primary mt-1">•</span>
+                            <span>Temps libéré = croissance accélérée</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- L'EXPERTISE -->
+    <section id="expertise" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                    La technologie <span class="gradient-text">sans le jargon</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Je ne suis pas juste un consultant tech, je connais la réalité de votre métier.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <div class="glass dark:glass rounded-2xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">Double expertise unique</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-2xl">
+                                        🍽️
+                                    </div>
+                                    <h4 class="text-xl font-semibold">20 ans dans la restauration</h4>
+                                </div>
+                                <p class="text-gray-400 ml-15">
+                                    Dont 12 ans en tant que chef d'entreprise, j'ai vécu vos challenges : rush du service, gestion des stocks,
+                                    plannings compliqués, relation client exigeante.
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-2xl">
+                                        🤖
+                                    </div>
+                                    <h4 class="text-xl font-semibold">Spécialiste IA & Automatisation</h4>
+                                </div>
+                                <p class="text-gray-400 ml-15">
+                                    Rompu à l'environnement IA, je vous offre une expertise tech pour transformer vos processus métier
+                                    en systèmes automatisés performants.
+                                </p>
+                            </div>
+
+                            <div class="pt-6 border-t border-primary/20">
+                                <p class="text-lg font-semibold text-primary">
+                                    = Des solutions concrètes qui fonctionnent vraiment sur le terrain.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-up">
+                    <div class="glass dark:glass rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Pourquoi cette différence compte ?</h3>
+                        <div class="space-y-4 text-gray-400">
+                            <div class="flex gap-3">
+                                <span class="text-primary text-xl">→</span>
+                                <p>Je comprends <strong class="text-white">immédiatement</strong> vos contraintes opérationnelles</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-primary text-xl">→</span>
+                                <p>Je parle votre langage, pas celui des geeks</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-primary text-xl">→</span>
+                                <p>Je propose des solutions <strong class="text-white">réalistes</strong> et adaptées à votre rythme</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-primary text-xl">→</span>
+                                <p>Je forme vos équipes avec pédagogie et empathie</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LES SERVICES -->
+    <section id="services" class="py-20 relative">
+        <!-- Subtle turquoise glow in background -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                    Mes <span class="gradient-text">Services</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Deux leviers complémentaires pour transformer votre entreprise
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Formation IA Générative -->
+                <div class="fade-in-up glass dark:glass rounded-2xl p-8 hover:border-primary/30 transition-all">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center text-3xl mb-6">
+                        🎓
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Formation IA Générative</h3>
+                    <p class="text-gray-400 mb-6">
+                        Formez vos équipes à maîtriser ChatGPT, Gemini, Claude et plusieurs autres outils d'IA pour
+                        gagner jusqu'à 10h par semaine dès la première session.
+                    </p>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-primary">✓</span>
+                            <span class="text-gray-400">Formation sur-mesure adaptée à votre secteur</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-primary">✓</span>
+                            <span class="text-gray-400">Cas pratiques concrets de votre métier</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-primary">✓</span>
+                            <span class="text-gray-400">Support post-formation inclus</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-primary/20">
+                        <p class="text-sm text-gray-400 mb-4">Idéal pour :</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Marketing</span>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Communication</span>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Support client</span>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Direction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Création de Workflows -->
+                <div class="fade-in-up glass dark:glass rounded-2xl p-8 hover:border-primary/30 transition-all">
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center text-3xl mb-6">
+                        ⚡
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Création de Workflows Automatisés</h3>
+                    <p class="text-gray-400 mb-6">
+                        Je conçois et déploie des automatisations sur-mesure
+                        qui tournent 24/7 pour vous.
+                    </p>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-primary">✓</span>
+                            <span class="text-gray-400">Automatisation emails & réservations</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-primary">✓</span>
+                            <span class="text-gray-400">Synchronisation de vos outils (CRM, calendriers, etc.)</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-primary">✓</span>
+                            <span class="text-gray-400">Maintenance et optimisation continue</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-primary/20">
+                        <p class="text-sm text-gray-400 mb-4">Exemples de workflows :</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Résa auto</span>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Relances clients</span>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Facturation</span>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Reporting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTHODE -->
+    <section id="methode" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                    Une méthode <span class="gradient-text">simple et efficace</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Pas de complexité inutile. Un processus clair en 3 étapes.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Étape 1 -->
+                <div class="fade-in-up relative">
+                    <div class="glass dark:glass rounded-2xl p-8 h-full">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center text-2xl font-bold mb-6">
+                            1
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Audit & Stratégie</h3>
+                        <p class="text-gray-400 mb-6">
+                            Échange gratuit de 30 min pour comprendre vos besoins et identifier
+                            les gains rapides possibles.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li class="flex gap-2"><span class="text-primary">•</span> Analyse de vos processus</li>
+                            <li class="flex gap-2"><span class="text-primary">•</span> Identification des quick wins</li>
+                            <li class="flex gap-2"><span class="text-primary">•</span> Devis personnalisé</li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="fade-in-up relative">
+                    <div class="glass dark:glass rounded-2xl p-8 h-full">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center text-2xl font-bold mb-6">
+                            2
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Mise en place</h3>
+                        <p class="text-gray-400 mb-6">
+                            Je déploie les solutions validées ensemble : formations interactives
+                            ou automatisations clés en main.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li class="flex gap-2"><span class="text-primary">•</span> Configuration des outils</li>
+                            <li class="flex gap-2"><span class="text-primary">•</span> Formation pratique</li>
+                            <li class="flex gap-2"><span class="text-primary">•</span> Tests & ajustements</li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="fade-in-up">
+                    <div class="glass dark:glass rounded-2xl p-8 h-full">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center text-2xl font-bold mb-6">
+                            3
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Suivi & Optimisation</h3>
+                        <p class="text-gray-400 mb-6">
+                            Support continu pour garantir que tout fonctionne parfaitement
+                            et s'améliore avec le temps.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li class="flex gap-2"><span class="text-primary">•</span> Support réactif</li>
+                            <li class="flex gap-2"><span class="text-primary">•</span> Optimisations régulières</li>
+                            <li class="flex gap-2"><span class="text-primary">•</span> Veille tech & IA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREUVE SOCIALE (Placeholder) -->
+    <!-- Uncomment when testimonials are ready
+    <section class="py-20 bg-dark-card dark:bg-dark-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                    Ce que disent <span class="gradient-text">les pros</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                Add testimonial cards here
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- ZONE DE CONVERSION -->
+    <section id="contact" class="py-20 connection-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                    Prêt à <span class="gradient-text">transformer</span> votre entreprise ?
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Réservez votre audit gratuit ou contactez-moi directement
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+                <!-- Formulaire de contact -->
+                <div class="fade-in-up">
+                    <div class="glass dark:glass rounded-xl sm:rounded-2xl p-6 sm:p-8">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Envoyez-moi un message</h3>
+                        <form class="space-y-4 sm:space-y-6" action="#" method="POST">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Nom complet</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email professionnel</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium mb-2">Téléphone</label>
+                                <input type="tel" id="phone" name="phone"
+                                    class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                            </div>
+
+                            <div>
+                                <label for="company" class="block text-sm font-medium mb-2">Entreprise</label>
+                                <input type="text" id="company" name="company"
+                                    class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2">Votre besoin</label>
+                                <textarea id="message" name="message" rows="4" required
+                                    class="w-full px-4 py-3 bg-black/40 backdrop-blur-sm border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:bg-black/60 transition-all text-white placeholder-gray-500"></textarea>
+                            </div>
+
+                            <button type="submit" class="neon-button w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90">
+                                Envoyer ma demande
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Calendly -->
+                <div class="fade-in-up">
+                    <div class="glass dark:glass rounded-xl sm:rounded-2xl p-6 sm:p-8 h-full">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Ou réservez directement un créneau</h3>
+                        <p class="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
+                            Choisissez le moment qui vous convient pour un échange de 30 minutes
+                            sans engagement.
+                        </p>
+
+                        <!-- Calendly Inline Widget -->
+                        <div class="calendly-inline-widget"
+                             data-url="https://calendly.com/votre-lien-calendly?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=8b5cf6"
+                             style="min-width:280px;height:550px;">
+                        </div>
+
+                        <div class="mt-4 sm:mt-6 p-3 sm:p-4 bg-primary/10 border border-primary/20 rounded-lg">
+                            <p class="text-xs sm:text-sm text-gray-400">
+                                <strong class="text-white">💡 Audit offert :</strong> Lors de cet appel,
+                                j'identifierai 2-3 automatisations rapides que vous pourrez mettre en place
+                                immédiatement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative border-t border-primary/10 py-12">
+        <!-- Subtle gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <a href="#" class="logo-glow mb-6 inline-block">
+                        <img src="logo-spailux.jpg" alt="SPAILUX Logo" class="h-16 w-auto rounded-lg transition-transform duration-300 hover:scale-105">
+                    </a>
+                    <p class="text-gray-400 mb-4">
+                        Consulting IA et Automatisation pour PME.<br/>
+                        L'expertise tech + métier au service de votre rentabilité.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Navigation</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#expertise" class="hover:text-primary transition-colors">Expertise</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="#methode" class="hover:text-primary transition-colors">Méthode</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Suivez-moi</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors group">
+                            <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+                <p>&copy; 2025 Spailux. Tous droits réservés.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-primary transition-colors">Mentions légales</a>
+                    <a href="#" class="hover:text-primary transition-colors">Politique de confidentialité</a>
+                    <a href="#" class="hover:text-primary transition-colors">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Calendly Script -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+
+        if (currentTheme === 'light') {
+            htmlElement.classList.remove('dark');
+            htmlElement.classList.add('light');
+            document.body.classList.remove('dark');
+            document.body.classList.add('light', 'bg-white', 'text-gray-900');
+            themeToggleDarkIcon.classList.remove('hidden');
+            themeToggleLightIcon.classList.add('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // Toggle theme
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                document.body.classList.remove('dark', 'bg-dark', 'text-white');
+                document.body.classList.add('light', 'bg-white', 'text-gray-900');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                document.body.classList.add('dark', 'bg-dark', 'text-white');
+                document.body.classList.remove('light', 'bg-white', 'text-gray-900');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submission (placeholder - add your backend logic)
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je reviendrai vers vous très rapidement.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
