@@ -1,0 +1,24 @@
+# robots.txt pour SPAILUX - Consultant IA Luxembourg
+# https://www.spailux.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.spailux.com/sitemap.xml
+
+# Crawl-delay (optionnel, pour éviter la surcharge du serveur)
+Crawl-delay: 1
+
+# Bloquer les fichiers et dossiers sensibles (si applicable)
+Disallow: /cgi-bin/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /CNAME
+
+# Autoriser les ressources importantes pour le SEO
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.css$
+Allow: /*.js$
